@@ -1,0 +1,29 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Calendar</h5>
+                <div>
+                    <a class="btn btn-sm btn-outline-secondary" href="{% url 'calendar' %}?{{ prev_month }}">
+                        <i class="bi bi-chevron-left"></i> Previous
+                    </a>
+                    <a class="btn btn-sm btn-outline-secondary" href="{% url 'calendar' %}?{{ next_month }}">
+                        Next <i class="bi bi-chevron-right"></i>
+                    </a>
+                    <a class="btn btn-sm btn-primary ms-2" href="{% url 'event_new' %}">
+                        <i class="bi bi-plus"></i> New Event
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="calendar-container">
+                    {{ calendar|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

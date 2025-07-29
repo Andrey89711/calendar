@@ -1,0 +1,45 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    {% if note %}Edit{% else %}New{% endif %} Note
+                </h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_title" class="form-label">Title</label>
+                        {{ note_form.title }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_content" class="form-label">Content</label>
+                        {{ note_form.content }}
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href="{% if note %}{% url 'notes_list' %}{% else %}{% url 'calendar' %}{% endif %}"
+                           class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left"></i> Cancel
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-save"></i> Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Добавляем классы Bootstrap к элементам формы
+    document.getElementById('id_title').className = 'form-control';
+    document.getElementById('id_content').className = 'form-control';
+</script>
+{% endblock %}
