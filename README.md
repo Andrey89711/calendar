@@ -5,4 +5,5 @@
 Все необходимые библиотеки указаны в файле requirements.txt (../main_calendar/requirements.txt)
 
 Логин: admin
+
 Пароль: admin
